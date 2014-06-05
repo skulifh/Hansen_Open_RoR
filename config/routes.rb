@@ -1,4 +1,5 @@
 Golf::Application.routes.draw do
+  #get "gallery/index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,6 +8,7 @@ Golf::Application.routes.draw do
   root 'welcome#index'
 
   resources :blogs
+  resources :gallery
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

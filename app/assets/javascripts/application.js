@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require galleria-1.3.5.min
+//= require galleria.flickr
+//= require galleria.classic.min
 //= require turbolinks
 //= require bootstrap.min
 //= require_tree .

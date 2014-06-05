@@ -14,6 +14,9 @@
 
     <!-- Add custom CSS here -->
     <link href="css/blog-post.css" rel="stylesheet">
+    <style>
+        #galleria{height:567px}
+    </style>
 
 </head>
 
@@ -134,6 +137,16 @@
 
         <hr>
 
+        <div class="row">
+                <div class="col-lg-12">
+                    <div id="galleria">
+                        <!--<img src="/IMG_0321.jpg">
+                        <img src="/IMG_0330.jpg">-->
+                    </div>
+                </div>
+            </div>
+
+
         <footer>
             <div class="row">
                 <div class="col-lg-12">
@@ -148,6 +161,25 @@
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script>
+            Galleria.loadTheme('/galleria.classic.min.js');
+            //Galleria.run('#galleria');
+            Galleria.run('#galleria', {
+            flickr: 'set:72157644463339447',
+            flickrOptions: {
+                max: 400,
+                sort: 'date-posted-asc'
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+$('#galleria').galleria({
+width: 700,
+height: 567 //--I made heights match
+});
+</script>
 
 </body>
 

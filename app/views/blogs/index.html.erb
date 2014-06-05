@@ -26,22 +26,24 @@
         <div class="row">
             <div class="col-lg-8">
 
+                <% @blogs.each do |blog| %>
+
                 <!-- blog entry -->
-                <h1><a href="#">A Blog Home Template for Bootstrap 3</a>
+                <h1><a href="#"><%=blog.title%></a>
                 </h1>
                 <p class="lead">by <a href="index.php">Start Bootstrap</a>
                 </p>
                 <hr>
                 <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+                    <span class="glyphicon glyphicon-time"></span> <%=blog.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p")  %></p>
                 <hr>
                 <img src="http://placehold.it/900x300" class="img-responsive">
                 <hr>
-                <p>This is a very basic starter template for a blog homepage. It makes use of Glyphicons that are built into Bootstrap 3, and it makes use of the Pager at the bottom of the page. Make sure you get the Glyphicons files by downloading the entire
-                    <code>/fonts</code>directory that you can download in the source files or at <a href="http://getbootstrap.com">getbootstrap.com</a>. That directory has all of the web fonts in it which makes Glyphicons work.</p>
+                <p><%=blog.text%></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
+                <% end %>
 
                 <!-- second blog entry -->
                 <h1><a href="#">Another Blog Post</a>
@@ -99,7 +101,7 @@
                     <!-- /input-group -->
                 </div>
                 <!-- /well -->
-                <div class="well">
+                <!--<div class="well">
                     <h4>Popular Blog Categories</h4>
                     <div class="row">
                         <div class="col-lg-6">
@@ -127,12 +129,12 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- /well -->
-                <div class="well">
+                <!--<div class="well">
                     <h4>Side Widget Well</h4>
                     <p>Bootstrap's default wells work great for side widgets! What is a widget anyways...?</p>
-                </div>
+                </div>-->
                 <!-- /well -->
             </div>
         </div>

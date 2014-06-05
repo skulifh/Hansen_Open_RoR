@@ -11,5 +11,6 @@
  *= require_self
  *= require bootstrap.min
  *= require custom
+ *= require galleria.classic
  *= require_tree .
  */

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/full-slider.css" rel="stylesheet">
+
+</head>
+
+<body style="margin-top: 100px;">
+
+<div class="container">
+<div class="row">
+
+			<% @galleries.each do |gallery| %>
+            <div class="col-md-4 portfolio-item">
+                <a href="#project-link">
+                    <img class="img-responsive" src="http://placehold.it/700x400">
+                </a>
+                <h3><a href="#project-link"><%=gallery.name%></a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+            <% end %>
+
+            <!--<div class="col-md-4 portfolio-item">
+                <a href="#project-link">
+                    <img class="img-responsive" src="http://placehold.it/700x400">
+                </a>
+                <h3><a href="#project-link">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+
+            <div class="col-md-4 portfolio-item">
+                <a href="#project-link">
+                    <img class="img-responsive" src="http://placehold.it/700x400">
+                </a>
+                <h3><a href="#project-link">Project Name</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>-->
+
+        </div>
+        </div>
+        </body>
+        </html>
