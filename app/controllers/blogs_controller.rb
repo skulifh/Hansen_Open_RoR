@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
 	def index
-		@blogs = Blog.all()
+		@blogs = Blog.find(:all, :order => "created_at desc")
 	end
 
 	def create
@@ -13,9 +13,13 @@ class BlogsController < ApplicationController
     	end
 	end
 
+	def show
+		@blog = Blog.find(params[:id])
+	end
+
 	private
 
 	def blog_params
-  	  params.require(:blog).permit(:title, :text)
+  	  params.require(:blog).permit(:title, :text, :photo)
     end
 end

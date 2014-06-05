@@ -15,6 +15,6 @@ class GalleryController < ApplicationController
   private
 
 	def gallery_params
-  	  params.require(:gallery).permit(:name, :setid)
+  	  params.require(:gallery).permit(:name, :setid, :photo)
     end
 end

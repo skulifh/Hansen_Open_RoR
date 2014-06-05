@@ -21,7 +21,7 @@
 
    
 
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 60px;">
 
         <div class="row">
             <div class="col-lg-8">
@@ -29,67 +29,37 @@
                 <% @blogs.each do |blog| %>
 
                 <!-- blog entry -->
-                <h1><a href="#"><%=blog.title%></a>
+                <h1><%= link_to blog.title, blog_path(blog.id), {method: :get} %></a>
                 </h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
+                <p class="lead">Höfundur: <a href="index.php">Start Bootstrap</a>
                 </p>
                 <hr>
                 <p>
-                    <span class="glyphicon glyphicon-time"></span> <%=blog.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p")  %></p>
+                    <span class="glyphicon glyphicon-time"></span> <%=blog.created_at.strftime("Skrifað þann %m/%d/%Y klukkan %I:%M%p")  %></p>
                 <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p><%=blog.text%></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <%= image_tag blog.photo.url(:preview), :class => "img-responsive" %>
+                <br>
+                <p><%=truncate blog.text, length: 400 %></p>
+
+                <%= button_to "Lesa meira", blog_path(blog.id), {method: :get, class: "btn btn-primary"} %>
 
                 <hr>
                 <% end %>
 
-                <!-- second blog entry -->
-                <h1><a href="#">Another Blog Post</a>
-                </h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <hr>
-                <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science...</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
-
-                <!-- third blog entry -->
-                <h1><a href="#">Third Blog Post Entry</a>
-                </h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <hr>
-                <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science...</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
 
                 <!-- pager -->
-                <ul class="pager">
+                <!--<ul class="pager">
                     <li class="previous"><a href="#">&larr; Older</a>
                     </li>
                     <li class="next"><a href="#">Newer &rarr;</a>
                     </li>
-                </ul>
+                </ul>-->
 
             </div>
 
             <div class="col-lg-4">
                 <div class="well">
-                    <h4>Blog Search</h4>
+                    <h4>Leita að frétt</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
                         <span class="input-group-btn">
