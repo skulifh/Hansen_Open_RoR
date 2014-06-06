@@ -10,6 +10,12 @@ Golf::Application.routes.draw do
   resources :blogs
   resources :gallery
 
+  resources :user
+  resources :session, only: [:new, :create, :destroy]
+  match '/signup',  to: 'user#new',            via: 'get'
+  match '/signin',  to: 'session#new',         via: 'get'
+  match '/signout', to: 'session#destroy',     via: 'delete'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

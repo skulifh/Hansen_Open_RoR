@@ -17,6 +17,10 @@
                     </li>
                     <li><%= link_to "Myndasöfn", gallery_index_path(), {method: :get} %>
                     </li>
+                    <% if current_user %> 
+                    <li><%= link_to "Admin", gallery_index_path(), {method: :get} %>
+                    </li>
+                    <%end%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
