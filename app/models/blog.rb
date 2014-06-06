@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+	belongs_to :user
 	has_attached_file :photo,
 		:styles => {:preview => ['900x300#']},
 		:path => ":rails_root/public/data/photos/galleries/:id/:basename_:style.:extension",

@@ -1,4 +1,5 @@
 class Gallery < ActiveRecord::Base
+	belongs_to :user
 	has_attached_file :photo,
 		:styles => {:preview => ['700x400#']},
 		:path => ":rails_root/public/data/photos/galleries/:id/:basename_:style.:extension",

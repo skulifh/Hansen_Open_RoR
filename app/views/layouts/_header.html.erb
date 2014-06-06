@@ -17,9 +17,13 @@
                     </li>
                     <li><%= link_to "Myndasöfn", gallery_index_path(), {method: :get} %>
                     </li>
-                    <% if current_user %> 
-                    <li><%= link_to "Admin", gallery_index_path(), {method: :get} %>
-                    </li>
+                    <% if !current_user %> 
+                        <li><%= link_to "Skrá inn", signin_path(), {method: :get} %>
+                        </li>
+                    <%end%>
+                    <% if current_user %>
+                        <li><%= link_to "Skrá út", signout_path(), {method: :delete} %>
+                        </li>
                     <%end%>
                 </ul>
             </div>

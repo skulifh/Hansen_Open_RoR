@@ -1,11 +1,18 @@
 class BlogsController < ApplicationController
-
+	include BlogsHelper
 	def index
 		@blogs = Blog.find(:all, :order => "created_at desc")
 	end
 
+	def new
+		if !current_user
+			redirect_to root_path
+		end
+	end
+
 	def create
 		@blog = Blog.new(blog_params)
+		@blog.user_id = current_user.id
 		if @blog.save
       		redirect_to root_path
     	else

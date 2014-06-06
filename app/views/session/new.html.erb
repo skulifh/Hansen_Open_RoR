@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 60px;">
 	<div class="col-md-4">
 	</div>
 	<div class="col-md-4">
@@ -6,17 +6,19 @@
 		<h1>Sign in</h1>
 
 		<%= form_for(:session, url: session_index_path) do |f| %>
-
+		<p>
 		<%= f.label :username %>
 		<%= f.text_field :username, class: "form-control" %>
-
+		</p>
+		<p>
 		<%= f.label :password %>
 		<%= f.password_field :password, class: "form-control" %>
-
+		</p>
+		<p>
 		<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+		</p>
 		<% end %>
-
-		<!--<p>New user? <%= link_to "Sign up now!", signup_path %></p>-->
+		<p>New user? <%= link_to "Sign up now!", signup_path %></p>
 	</div>
 	<div class="col-md-4">
 	</div>
