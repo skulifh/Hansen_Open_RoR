@@ -1,6 +1,8 @@
 class UserController < ApplicationController
 	def create
+		hashed_pw = Digest::SHA1.hexdigest(user_params[:password])
 	  	@user = User.new(user_params)
+	  	@user.password = hashed_pw
 	    @user.admin = false
 
 	    if @user.save

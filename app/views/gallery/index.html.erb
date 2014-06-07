@@ -15,7 +15,7 @@
     <!-- Add custom CSS here -->
     <link href="css/full-slider.css" rel="stylesheet">
     <style>
-        #galleria{height:467px}
+        #galleria{height:407px}
     </style>
 
 </head>
@@ -24,43 +24,68 @@
 
     <div class="container">
         <div class="row">
-        <div class="col-lg-8">
+            <div class="col-lg-12">
+                <div class="col-lg-4">
 
-         <% @galleries.each do |gallery| %>
-         <div class="col-md-6 portfolio-item">
-         <div class="thumbnail">
-            <a >
-                <%= image_tag gallery.photo.url(:preview), :class => "img-responsive" %>
-            </a>
-            <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick();"><%=gallery.name%></a>
-            </h3>
-            <p><%= gallery.description %></p>
-        </div>
-        </div>
-        <% end %>
-        </div>
-        <div class="col-lg-4">
-               
-                <div class="col-lg-12">
-                    <div class="well">
-                        <h4>Leita að Myndaalbúmi</h4>
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
+                    <div class="col-lg-12">
+                        <div class="well">
+                            <h4>Leita að Myndaalbúmi</h4>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+
                         </div>
-                        <!-- /input-group -->
+                    </div>
+                    <% if current_user %>
+                    <div class="col-lg-12">
+                        <p><%= button_to "Nýtt myndaalbúm", new_gallery_path, {method: :get, class: "btn btn-primary"} %></p>
+                    </div>
+                    <% end%>
+                </div>
+
+                <% @galleries.each_with_index do |gallery, index| %>
+                <div class="col-md-4 portfolio-item" style="margin-bottom:60px;">
+                 <div class="thumbnail">
+                    <a >
+                        <%= image_tag gallery.photo.url(:preview), :class => "img-responsive" %>
+                    </a>
+                    <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>');"><%=gallery.name%></a>
+                    </h3>
+                    <p>
+                        <span class="glyphicon glyphicon-time"></span> <%=gallery.created_at.strftime("Sett inn %m/%d/%Y, klukkan %H:%M")  %></p> <hr>
+                        <p style = "height: 60px;"><%= gallery.description %></p>
+                        <%if current_user%><%= button_to "Eyða myndaalbúmi", gallery_path(:id => gallery.id), {method: :delete, class: "btn btn-danger"} %><%end%>
                     </div>
                 </div>
-                 <% if current_user %>
-                <div class="col-lg-12">
-                    <p><%= button_to "Nýtt myndaalbúm", new_gallery_path, {method: :get, class: "btn btn-primary"} %></p>
-                </div>
-                <% end%>
+                <% end %>
             </div>
+        <!--<div class="col-lg-4">
+
+            <div class="col-lg-12">
+                <div class="well">
+                    <h4>Leita að Myndaalbúmi</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <% if current_user %>
+            <div class="col-lg-12">
+                <p><%= button_to "Nýtt myndaalbúm", new_gallery_path, {method: :get, class: "btn btn-primary"} %></p>
+            </div>
+            <% end%>
+        </div>-->
     </div>
 </div>
 
@@ -69,55 +94,61 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
-      </div>
-      <div class="modal-body">
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        
+    </div>
+    <div class="modal-body">
         <div class="row">
-                <div class="col-lg-12">
-                    <div id="galleria">
+            <div class="col-lg-12">
+                <div id="galleria">
                         <!--<img src="/IMG_0321.jpg">
                         <img src="/IMG_0330.jpg">-->
                     </div>
                 </div>
             </div>
-      </div>
-      <!--<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>-->
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Loka</button>
+        <button id="fullscreen" type="button" class="btn btn-success">Fullscreen</button>
     </div>
-  </div>
+</div>
+</div>
 </div>
 
 </body>
 </html>
 
 <script type="text/javascript">
-$('#galleria').galleria({
-width: 700,
-height: 467 //--I made heights match
-});
+    $('#galleria').galleria({
+        width: 700,
+        height: 407 //--I made heights match
+    });
 
-window.onload = function() {
-  loadGalleria(72157612108853933);
-};
+    $('#fullscreen').click(function() {
+        $('#galleria').data('galleria').toggleFullscreen(); // toggles the fullscreen
+    });
 
-function loadGalleria(set) {
-    var setString = 'set:' + set;
-    //alert(setString);
-    Galleria.loadTheme('/galleria.classic.min.js');
-            //Galleria.run('#galleria');
-            Galleria.run('#galleria', {
+    window.onload = function() {
+      loadGalleria(72157612108853933);
+    };
+
+    function loadGalleria(set) {
+        var setString = 'set:' + set;
+        //alert(setString);
+        Galleria.loadTheme('/galleria.classic.min.js');
+                //Galleria.run('#galleria');
+        Galleria.run('#galleria', {
             flickr: setString,
             flickrOptions: {
                 max: 400,
                 sort: 'date-posted-asc'
             }
         });
-}
+    }
 
-function modalClick() {  
-    $('#myModal').modal('toggle');
-  }
+    function modalClick(title) {  
+        $("#myModalLabel").text(title);
+        $('#myModal').modal('toggle');
+    }
 
-</script>
+    </script>

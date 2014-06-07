@@ -15,7 +15,7 @@
       </p>
       <p>
         <%= f.label 'Description:' %><br/>
-        <%= f.text_area :description, rows: 10, class: "form-control" %>  
+        <%= f.text_area :description, :maxlength => 115, rows: 3, class: "form-control" %>  
       </p>
       <p>
         <%= f.file_field :photo %>

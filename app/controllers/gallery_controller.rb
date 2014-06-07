@@ -10,6 +10,10 @@ class GalleryController < ApplicationController
     end
   end
 
+  def update
+    
+  end
+
   def create
 		@gallery = Gallery.new(gallery_params)
     @gallery.user_id = current_user.id
@@ -19,6 +23,16 @@ class GalleryController < ApplicationController
       		redirect_to root_path
     	end
 	end
+
+  def destroy
+    if current_user
+            @gallery = Gallery.find(params[:id])
+            @gallery.destroy
+            redirect_to gallery_index_path
+        else
+            redirect_to gallery_index_path
+        end
+  end
 
   private
 
