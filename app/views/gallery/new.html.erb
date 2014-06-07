@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container" style="margin-top: 60px;">
+<head>
+  <style>
+        #galleria{height:407px}
+    </style>
+</head>
+
+<body style="margin-top: 60px;">
+
+<div class="container">
   <div class="col-md-4">
   </div>
   <div class="col-md-4">
@@ -12,6 +22,9 @@
       <p>
         <%= f.label 'Set-id:' %><br/>
         <%= f.text_field :setid, :required => true, class: "form-control" %>  
+      </p>
+      <p>
+      <a class="btn btn-default" href="#project-link" onclick="loadGalleria();modalClick();">Skoða myndir</a>
       </p>
       <p>
         <%= f.label 'Description:' %><br/>
@@ -28,7 +41,67 @@
         <%= f.submit 'Hreinsa', class: "btn btn-default", :type => 'reset' %>
       </p>
     <% end %>
+
+    
   </div>
   <div class="col-md-4">
   </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="galleria">
+                        <!--<img src="/IMG_0321.jpg">
+                        <img src="/IMG_0330.jpg">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Loka</button>
+            <button id="fullscreen" type="button" class="btn btn-success">Fullscreen</button>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+  window.onload = function() {
+      loadGalleria(72157612108853933);
+    };
+
+    $('#galleria').galleria({
+        width: 700,
+        height: 407 //--I made heights match
+    });
+
+
+  function loadGalleria(set) {
+        var setString = 'set:' + document.getElementById("gallery_setid").value;
+        //alert(setString);
+        Galleria.loadTheme('/galleria.classic.min.js');
+                //Galleria.run('#galleria');
+        Galleria.run('#galleria', {
+            flickr: setString,
+            flickrOptions: {
+                max: 400,
+                sort: 'date-posted-asc'
+            }
+        });
+    }
+
+  function modalClick() {  
+        $('#myModal').modal('toggle');
+    }
+</script>
