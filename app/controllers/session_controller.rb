@@ -4,8 +4,9 @@ class SessionController < ApplicationController
 	end
 
 	def create
+			hashed_pw = Digest::SHA1.hexdigest(params[:session][:password])
 			user = User.find_by(username: params[:session][:username])
-		    if user && user.password == params[:session][:password]
+		    if user && user.password == hashed_pw
 		     	sign_in user
         		redirect_to root_path()
 		    else
