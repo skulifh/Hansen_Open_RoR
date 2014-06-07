@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-4">
     <h1>New Gallery</h1>
-    <%= form_for :gallery, url: {action: "create"}, html: {:multipart => true} do |f| %>
+    <%= form_for @gallery, url: {action: "update", controller: "gallery"}, html: {:multipart => true} do |f| %>
       <p>
         <%= f.label 'Name:' %><br/>
         <%= f.text_field :name, :required => true, class: "form-control" %>
@@ -15,10 +15,13 @@
       </p>
       <p>
         <%= f.label 'Description:' %><br/>
-        <%= f.text_area :description, :required => true, :maxlength => 115, rows: 3, class: "form-control" %>  
+        <%= f.text_area :description, :required => true,  :maxlength => 115, rows: 3, class: "form-control" %>  
       </p>
+      <% if !@gallery.photo.nil? || !@gallery.photo.empty? %>
+        Mynd upphlaðin
+      <% end %>
       <p>
-        <%= f.file_field :photo, :required => true %>
+        <%= f.file_field :photo %>
       </p>
       <!--<p>
         <%= f.file_field :photo %>
