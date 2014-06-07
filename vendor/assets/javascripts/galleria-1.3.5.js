@@ -5670,7 +5670,7 @@ Galleria.addTheme = function( theme ) {
                     });
                     if (!css) {
                         if (retryCount++ > 5) {
-                            Galleria.raise('No theme CSS loaded');
+                            Galleria.raise('');
                         } else {
                             window.setTimeout(tryLoadCss, 500);
                         }
