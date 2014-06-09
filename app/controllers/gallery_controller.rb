@@ -11,8 +11,8 @@ class GalleryController < ApplicationController
   end
 
   def update
-    if current_user
-      gallery = Gallery.find(params[:id])
+    gallery = Gallery.find(params[:id])
+    if has_access(gallery, current_user)
       gallery.update_attributes(gallery_params)
       redirect_to gallery_index_path
     else
@@ -39,8 +39,8 @@ class GalleryController < ApplicationController
   end
 
   def destroy
-    if current_user
-      @gallery = Gallery.find(params[:id])
+    @gallery = Gallery.find(params[:id])
+    if has_access(@gallery, current_user)
       @gallery.destroy
       redirect_to gallery_index_path
     else

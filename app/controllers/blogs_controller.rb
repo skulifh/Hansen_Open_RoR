@@ -11,8 +11,8 @@ class BlogsController < ApplicationController
 	end
 
 	def update
-		if current_user
-			blog = Blog.find(params[:id])
+		blog = Blog.find(params[:id])
+		if has_access(blog,current_user)
 			blog.update_attributes(blog_params)
 			redirect_to blogs_path
 		else
@@ -21,16 +21,15 @@ class BlogsController < ApplicationController
 	end
 
 	def edit
-		if current_user
-			@blog = Blog.find(params[:id])
-		else
+		@blog = Blog.find(params[:id])
+		if !has_access(@blog, current_user)
 			redirect_to blogs_path
 		end
 	end
 
 	def destroy
-		if current_user
-			@blog = Blog.find(params[:id])
+		@blog = Blog.find(params[:id])
+		if has_access(@blog, current_user)
 			@blog.destroy
 			redirect_to blogs_path
 		else

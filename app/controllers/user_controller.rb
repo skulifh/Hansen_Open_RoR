@@ -1,18 +1,75 @@
 class UserController < ApplicationController
+	include UserHelper
 	def create
-		hashed_pw = Digest::SHA1.hexdigest(user_params[:password])
-	  	@user = User.new(user_params)
-	  	@user.password = hashed_pw
-	    @user.admin = false
+		if current_user && is_admin(current_user)
+			hashed_pw = Digest::SHA1.hexdigest("123")
+		  	@user = User.new(user_params)
+		  	@user.password = hashed_pw
+		    @user.admin = false
 
-	    if @user.save
-	      redirect_to root_path
-	    else
-	      render 'new'
-	    end
+		    if @user.save
+		      redirect_to root_path
+		    else
+		      render 'new'
+		    end
+		else
+			redirect_to root_path
+		end
 
   	#@user.save!
   	#redirect_to users_path()
+  end
+
+  def admin
+  	if current_user && is_admin(current_user)
+  		@users = User.all(:order => "fullname ASC")
+  	else
+  		redirect_to root_path
+  	end
+  end
+
+  def update
+  	if current_user
+	  	user = User.find(params[:id])
+	  	hashed_pw = Digest::SHA1.hexdigest(user_params[:password])
+	  	#user_params[:password] = hashed_pw
+		user.password = hashed_pw
+		user.save!
+		redirect_to root_path
+	else
+		redirect_to root_path
+	end
+  end
+
+  def edit
+  	if current_user
+		@user = User.find(params[:id])
+	else
+		redirect_to root_path
+	end
+		
+	end
+
+  def add_admin
+  	if current_user && is_admin(current_user)
+	  	user = User.find(params[:user_id])
+	  	user.admin = true
+	  	user.save!
+	  	redirect_to admin_path
+	  else
+	  	redirect_to root_path
+	  end
+  end
+
+  def remove_admin
+  	if current_user && is_admin(current_user)
+	  	user = User.find(params[:user_id])
+	  	user.admin = false
+	  	user.save!
+	  	redirect_to admin_path
+	  else
+	  	redirect_to root_path
+	  end
   end
 
   private

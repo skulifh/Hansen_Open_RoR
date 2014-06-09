@@ -7,23 +7,23 @@
     <%= form_for :user, url: {action: "create"} do |f| %>
       <p>
         <%= f.label 'username:' %><br/>
-        <%= f.text_field :username, class: "form-control" %>
+        <%= f.text_field :username, :required => true, class: "form-control" %>
       </p>
       <p>
         <%= f.label 'fullname:' %><br/>
-        <%= f.text_field :fullname, class: "form-control" %>  </p>
+        <%= f.text_field :fullname, :required => true, class: "form-control" %>  </p>
       <p>
       <p>
         <%= f.label 'email:' %><br/>
-        <%= f.text_field :email, class: "form-control" %>  </p>
-      <p>
+        <%= f.text_field :email, :required => true, class: "form-control" %>  </p>
+      <!--<p>
         <%= f.label 'password:' %><br/>
         <%= f.password_field :password, class: "form-control"%>
       </p>
       <p>
         <%= f.label 'password confirmation:' %><br/>
         <%= f.password_field :password_confirmation, class: "form-control" %>
-      </p>
+      </p>-->
       <p>
         <%= f.submit 'Sign Up', class: "btn btn-success" %>&nbsp;&nbsp;&nbsp;
         <%= f.submit 'Clear Form', class: "btn btn-default", :type => 'reset' %>
