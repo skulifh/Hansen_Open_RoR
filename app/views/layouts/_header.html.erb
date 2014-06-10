@@ -28,8 +28,7 @@
                         <li><%= link_to "Admin", admin_path(), {method: :get} %>
                         </li>
                         <%end%>
-                        <li><%= link_to current_user.fullname, signout_path(), {method: :delete} %>
-                        </li>
+                        
                         <li><%= link_to "Breyta lykilorði", edit_user_path(:id => current_user.id), {method: :get} %>
                         </li>
                     <%end%>
