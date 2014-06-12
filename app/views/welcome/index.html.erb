@@ -9,9 +9,13 @@
 
     <title>Starter Template for Bootstrap</title>
 
+    <style>
+        #galleria{height:407px}
+    </style>
+
 </head>
 
-<body  style="margin-top: 60px;">
+<body  style="margin-top: 51px;">
 
     
 
@@ -26,21 +30,21 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill" style="background-image:url('IMG_0336.jpg');"></div>
-                <div class="carousel-caption">
+                <!--<div class="carousel-caption">
                     <h1>A Full-Width Image Slider Template</h1>
-                </div>
+                </div>-->
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('IMG_0321.jpg');"></div>
-                <div class="carousel-caption">
+                <!--<div class="carousel-caption">
                     <h1>Caption 2</h1>
-                </div>
+                </div>-->
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('IMG_0330.jpg');"></div>
-                <div class="carousel-caption">
+                <!--<div class="carousel-caption">
                     <h1>Caption 3</h1>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -72,23 +76,25 @@
         
         <div class="row">
 
+            <% @blogs.each do |blog| %>
             <div class="col-md-6 portfolio-item">
                 <a href="#project-link">
-                    <img class="img-responsive" src="http://placehold.it/700x400">
+                    <%= image_tag blog.photo.url(:frontpage), :class => "img-responsive" %>
                 </a>
-                <h3><a href="#project-link">Project Name</a>
+                <h3><%= link_to blog.title, blog_path(blog.id), {method: :get} %></a>
                 </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <p><%=truncate blog.text, length: 300 %></p>
             </div>
+            <% end %>
 
-            <div class="col-md-6 portfolio-item">
+            <!--<div class="col-md-6 portfolio-item">
                 <a href="#project-link">
                     <img class="img-responsive" src="http://placehold.it/700x400">
                 </a>
                 <h3><a href="#project-link">Project Name</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            </div>-->
 
         </div>
 
@@ -109,7 +115,20 @@
         
         <div class="row">
 
+        <% @galleries.each do |gallery| %>
+
             <div class="col-md-4 portfolio-item">
+                <a href="#project-link">
+                    <%= image_tag gallery.photo.url(:frontpage), :class => "img-responsive" %>
+                </a>
+                <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>');"><%=gallery.name%></a>
+                </h3>
+                <p><%= gallery.description %></p>
+            </div>
+
+        <%end%>
+
+            <!--<div class="col-md-4 portfolio-item">
                 <a href="#project-link">
                     <img class="img-responsive" src="http://placehold.it/700x400">
                 </a>
@@ -134,7 +153,7 @@
                 <h3><a href="#project-link">Project Name</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            </div>-->
 
         </div>
 
@@ -256,6 +275,32 @@
     </div>
     <!-- /.container -->
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="galleria">
+                        <!--<img src="/IMG_0321.jpg">
+                        <img src="/IMG_0330.jpg">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Loka</button>
+            <button id="fullscreen" type="button" class="btn btn-success">Fullscreen</button>
+        </div>
+    </div>
+</div>
+</div>
+
     <!-- JavaScript -->
 
     <!-- Script to Activate the Carousel -->
@@ -265,5 +310,39 @@
     })
     </script>
 </body>
+
+<script type="text/javascript">
+    $('#galleria').galleria({
+        width: 700,
+        height: 407 //--I made heights match
+    });
+
+    $('#fullscreen').click(function() {
+        $('#galleria').data('galleria').toggleFullscreen(); // toggles the fullscreen
+    });
+
+    window.onload = function() {
+      loadGalleria(72157612108853933);
+    };
+
+    function loadGalleria(set) {
+        var setString = 'set:' + set;
+        //alert(setString);
+        Galleria.loadTheme('/galleria.classic.min.js');
+                //Galleria.run('#galleria');
+        Galleria.run('#galleria', {
+            flickr: setString,
+            flickrOptions: {
+                max: 400,
+                sort: 'date-posted-asc'
+            }
+        });
+    }
+
+    function modalClick(title) {  
+        $("#myModalLabel").text(title);
+        $('#myModal').modal('toggle');
+    }
+</script>
 
 </html>
