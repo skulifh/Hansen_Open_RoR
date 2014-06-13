@@ -170,7 +170,26 @@
 
         <div class="row">
 
-            <div class="col-md-3 portfolio-item">
+        <% @users.each do |user| %>
+
+        <div class="col-md-3 portfolio-item">
+            <% if user.photo %>
+                <a href="#project-link">
+                    <%= image_tag user.photo.url(:frontpage), :class => "img-responsive img-circle" %>
+                </a>
+            <%else%>
+                <a href="#project-link">
+                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
+                </a>
+            <%end%>
+                <h3><a href="#project-link"><%=user.fullname%></a>
+                </h3>
+                <p><%=user.description%></p>
+            </div>
+
+        <%end%>
+
+            <!--<div class="col-md-3 portfolio-item">
                 <a href="#project-link">
                     <img class="img-responsive img-circle" src="http://placehold.it/700x700">
                 </a>
@@ -244,7 +263,7 @@
                 <h3><a href="#project-link">Project Name</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
+            </div>-->
 
         </div>
 

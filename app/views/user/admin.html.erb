@@ -7,6 +7,7 @@
         <th>Nafn</th>
         <th>Notendanafn</th>
         <th>Stjórnandi</th>
+        <th>Breyta</th>
         </tr>
       </thead>
 
@@ -22,6 +23,7 @@
           <% else %>
             <td style="width:auto;"><%= button_to "Nei", user_add_admin_path(:user_id => user.id), {method: :put, class: "btn btn-default"} %></td>
           <% end %>
+          <td style="width:auto;"><%= button_to "Breyta", edit_user_path(:id => user.id), {method: :get, class: "btn btn-default"} %></td>
 
         </tr>
 

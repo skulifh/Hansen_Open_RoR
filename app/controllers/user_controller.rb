@@ -31,9 +31,16 @@ class UserController < ApplicationController
   def update
   	if current_user
 	  	user = User.find(params[:id])
-	  	hashed_pw = Digest::SHA1.hexdigest(user_params[:password])
-	  	#user_params[:password] = hashed_pw
-		user.password = hashed_pw
+	  	if !user_params[:password].empty?
+	  		hashed_pw = Digest::SHA1.hexdigest(user_params[:password])
+		  	#user_params[:password] = hashed_pw
+			user.password = hashed_pw
+		end
+		if !user_params[:photo].nil?
+			user.photo = user_params[:photo]
+		end
+		user.description = user_params[:description]
+
 		user.save!
 		redirect_to root_path
 	else
@@ -75,6 +82,6 @@ class UserController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:username, :fullname, :password, :email, :admin)
+  	params.require(:user).permit(:username, :fullname, :password, :email, :admin, :photo, :description)
   end
 end
