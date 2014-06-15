@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body style="margin-top: 60px;">
+
+<div class="container">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <h1>New Gallery</h1>
+    <%= form_for :image, url: {action: "create"}, html: {:multipart => true} do |f| %>
+      <p>
+        <%= f.label 'Description:' %><br/>
+        <%= f.text_field :description, :required => true, class: "form-control" %>  
+      </p>
+      <p>
+        <%= f.file_field :photo, :required => true %>
+      </p>
+      <!--<p>
+        <%= f.file_field :photo %>
+      </p>-->
+      <p>
+        <%= f.submit 'Vista', class: "btn btn-success" %>&nbsp;&nbsp;&nbsp;
+        <%= f.submit 'Hreinsa', class: "btn btn-default", :type => 'reset' %>
+      </p>
+    <% end %>
+
+    
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+</body>
+</html>

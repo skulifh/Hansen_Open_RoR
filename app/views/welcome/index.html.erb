@@ -29,19 +29,40 @@
 
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('IMG_0336.jpg');"></div>
+                <div class="fill" >
+                	<%if !@images[0].nil? %>
+                		<%= image_tag @images[0].photo.url(:slider)%>
+                	<%else%>
+                		<img src="http://placehold.it/1400x410">
+
+                	<%end%>
+                </div>
                 <!--<div class="carousel-caption">
                     <h1>A Full-Width Image Slider Template</h1>
                 </div>-->
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('IMG_0321.jpg');"></div>
+                <div class="fill" >
+                	<%if !@images[1].nil? %>
+                		<%= image_tag @images[1].photo.url(:slider)%>
+                	<%else%>
+                		<img src="http://placehold.it/1400x410">
+
+                	<%end%>
+                </div>
                 <!--<div class="carousel-caption">
                     <h1>Caption 2</h1>
                 </div>-->
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('IMG_0330.jpg');"></div>
+                <div class="fill" >
+                	<%if !@images[2].nil? %>
+                		<%= image_tag @images[2].photo.url(:slider)%>
+                	<%else%>
+                		<img src="http://placehold.it/1400x410">
+
+                	<%end%>
+                </div>
                 <!--<div class="carousel-caption">
                     <h1>Caption 3</h1>
                 </div>-->
@@ -62,11 +83,16 @@
     <div class="container">
 
         <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            
+            <% if !@images[3].nil? %>
+            	<%= image_tag @images[3].photo.url(:frontpage), :class => "featurette-image img-circle img-responsive pull-right" %>
+            <%else%>
+            	<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <%end%>
             <h2 class="featurette-heading">Velkomin
                 <span class="text-muted"> á heimasíðu Hansen Open</span>
             </h2>
-            <p class="lead">Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! Flottur texti kemur hingað! </p>
+            <p class="lead">Hér getur þú skoðað allar myndir frá liðnum mótum, lesið fréttir tengt mótinu og fylgst með stöðu þegar mót er í gangi. <br><br> Hansen Open var fyrst haldið árið 2003 og hefur verið haldið árlega síðan þá. Mótið er haldið innan karlalegg Hansen fjölskyldunnar og er eitt af virtustu mótum landsins. Keppt er í punktakeppni með forgjöf sem gefur öllum keppendum jafna möguleika á að sigra.</p>
         </div>
 
     </div>

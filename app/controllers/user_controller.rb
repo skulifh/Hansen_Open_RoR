@@ -23,6 +23,7 @@ class UserController < ApplicationController
   def admin
   	if current_user && is_admin(current_user)
   		@users = User.all(:order => "fullname ASC")
+  		@images = Image.all()
   	else
   		redirect_to root_path
   	end

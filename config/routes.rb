@@ -1,4 +1,7 @@
 Golf::Application.routes.draw do
+  get "image/index"
+  get "image/new"
+  get "image/edit"
   #get "gallery/index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -9,6 +12,7 @@ Golf::Application.routes.draw do
 
   resources :blogs
   resources :gallery
+  resources :image
 
   resources :user do
     put :add_admin

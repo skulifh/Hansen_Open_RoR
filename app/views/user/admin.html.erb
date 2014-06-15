@@ -11,7 +11,7 @@
         </tr>
       </thead>
 
-
+      <h2>Notandalisti</h2>
       <tbody id="operationlist" class="scrollContent">
       <% @users.each do |user| %>
 
@@ -31,6 +31,28 @@
       </tbody>
     </table>
 <%= button_to "Nýr notandi", signup_path, {method: :get, class: "btn btn-success"} %>
+  <br><br>
+    <h2>Myndalisti</h2>
+    <table class="tablesorter table table-hover"  id="user_list">
+      <thead class="table-header fixedHeader">
+        <tr colspan="8">
+        <th>Lýsing</th>
+        <th>Breyta</th>
+        </tr>
+      </thead>
+
+      <tbody id="operationlist" class="scrollContent">
+      <% @images.each do |image| %>
+
+        <tr>
+          <td style="width:auto;"><%=image.description%></td>
+          <td style="width:auto;"><%= button_to "Breyta", edit_image_path(:id => image.id), {method: :get, class: "btn btn-default"} %></td>
+
+        </tr>
+
+      <% end %>
+      </tbody>
+    </table>
 
   </div>
 </div>
