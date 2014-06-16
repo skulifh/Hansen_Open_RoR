@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	#validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	
 	validates_attachment :photo,
-    	:presence => true,
+    	#:presence => true,
     	content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
 	def User.new_remember_token

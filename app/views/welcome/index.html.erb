@@ -31,7 +31,8 @@
             <div class="item active">
                 <div class="fill" >
                 	<%if !@images[0].nil? %>
-                		<%= image_tag @images[0].photo.url(:slider)%>
+                        <div class="fill" style="background-image:url(<%=@images[0].photo.url(:slider)%>);"></div>
+                		<%#= image_tag @images[0].photo.url(:slider)%>
                 	<%else%>
                 		<img src="http://placehold.it/1400x410">
 
@@ -44,7 +45,7 @@
             <div class="item">
                 <div class="fill" >
                 	<%if !@images[1].nil? %>
-                		<%= image_tag @images[1].photo.url(:slider)%>
+                		<div class="fill" style="background-image:url(<%=@images[1].photo.url(:slider)%>);"></div>
                 	<%else%>
                 		<img src="http://placehold.it/1400x410">
 
@@ -57,7 +58,7 @@
             <div class="item">
                 <div class="fill" >
                 	<%if !@images[2].nil? %>
-                		<%= image_tag @images[2].photo.url(:slider)%>
+                		<div class="fill" style="background-image:url(<%=@images[2].photo.url(:slider)%>);"></div>
                 	<%else%>
                 		<img src="http://placehold.it/1400x410">
 
