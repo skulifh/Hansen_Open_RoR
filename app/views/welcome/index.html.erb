@@ -167,33 +167,8 @@
 
         <%end%>
 
-            <!--<div class="col-md-4 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive" src="http://placehold.it/700x400">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-4 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive" src="http://placehold.it/700x400">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-4 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive" src="http://placehold.it/700x400">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>-->
-
+            
+        </div>
         </div>
 
     <div class="container">
@@ -211,7 +186,7 @@
 
         <% @users.each do |user| %>
 
-        <div class="col-md-3 portfolio-item">
+        <div class="col-md-3 portfolio-item" style="margin-bottom: 50px;">
             <% if user.photo %>
                 <a href="#project-link">
                     <%= image_tag user.photo.url(:frontpage), :class => "img-responsive img-circle" %>
@@ -228,110 +203,12 @@
 
         <%end%>
 
-            <!--<div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
         </div>
 
-        <div class="row">
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>
-
-            <div class="col-md-3 portfolio-item">
-                <a href="#project-link">
-                    <img class="img-responsive img-circle" src="http://placehold.it/700x700">
-                </a>
-                <h3><a href="#project-link">Project Name</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            </div>-->
-
-        </div>
-
-        
-        <!--<div class="row text-center">
-
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li><a href="#">&laquo;</a>
-                    </li>
-                    <li class="active"><a href="#">1</a>
-                    </li>
-                    <li><a href="#">2</a>
-                    </li>
-                    <li><a href="#">3</a>
-                    </li>
-                    <li><a href="#">4</a>
-                    </li>
-                    <li><a href="#">5</a>
-                    </li>
-                    <li><a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>-->
-
+    <hr class="featurette-divider">
     </div>
     <!-- /.container -->
+
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
