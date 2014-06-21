@@ -1,7 +1,7 @@
 class GalleryController < ApplicationController
   include GalleryHelper
   def index
-  	@galleries = Gallery.all()
+  	@galleries = Gallery.find(:all, :order => "created_at desc")
   end
 
   def new
