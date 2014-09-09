@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615202620) do
+ActiveRecord::Schema.define(version: 20140909164402) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140615202620) do
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
     t.text     "description"
+    t.integer  "sign_in_counter",    default: 0
   end
 
 end
