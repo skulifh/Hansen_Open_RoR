@@ -190,7 +190,7 @@ Galleria.Flickr.prototype = {
 
     _call: function( params, callback ) {
 
-        var url = 'http://api.flickr.com/services/rest/?';
+        var url = 'https://api.flickr.com/services/rest/?';
 
         var scope = this;
 
