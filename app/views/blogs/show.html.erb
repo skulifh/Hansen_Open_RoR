@@ -31,15 +31,15 @@
 
                 <!-- the actual blog post: title/author/date/content -->
                 <h1><%=@blog.title%></h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
+                <p class="lead">Höfundur: <%=@blog.user.fullname%>
                 </p>
                 <hr>
                 <p>
-                    <span class="glyphicon glyphicon-time"></span> <%=@blog.created_at.strftime("Posted on %m/%d/%Y at %I:%M%p")  %></p>
+                    <span class="glyphicon glyphicon-time"></span> <%=@blog.created_at.strftime("Skrifað þann %m/%d/%Y, klukkan %H:%M")  %></p>
                 <hr>
                 <%= image_tag @blog.photo.url(:preview), :class => "img-responsive" %>
                 <hr>
-                <p><%=@blog.text%></p>
+                <p><%=simple_format(@blog.text)%></p>
 
                 <hr>
 
@@ -123,14 +123,6 @@
 
         <hr>
 
-        <div class="row">
-                <div class="col-lg-12">
-                    <div id="galleria">
-                        <!--<img src="/IMG_0321.jpg">
-                        <img src="/IMG_0330.jpg">-->
-                    </div>
-                </div>
-            </div>
 
 
         <!--<footer>
@@ -148,23 +140,10 @@
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
 
-    <script>
-            Galleria.loadTheme('/galleria.classic.min.js');
-            //Galleria.run('#galleria');
-            Galleria.run('#galleria', {
-            flickr: 'set:72157644463339447',
-            flickrOptions: {
-                max: 400,
-                sort: 'date-posted-asc'
-            }
-        });
-    </script>
+    
 
     <script type="text/javascript">
-$('#galleria').galleria({
-width: 700,
-height: 567 //--I made heights match
-});
+
 </script>
 
 </body>
