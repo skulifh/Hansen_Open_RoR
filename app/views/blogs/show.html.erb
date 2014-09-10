@@ -37,7 +37,7 @@
                 <p>
                     <span class="glyphicon glyphicon-time"></span> <%=@blog.created_at.strftime("Skrifað þann %m/%d/%Y, klukkan %H:%M")  %></p>
                 <hr>
-                <%= image_tag @blog.photo.url(:preview), :class => "img-responsive" %>
+                <a href="#myModal" data-toggle="modal"><%= image_tag @blog.photo.url(:frontpage), :class => "img-responsive" %></a>
                 <hr>
                 <p><%=simple_format(@blog.text)%></p>
 
@@ -145,6 +145,11 @@
     <script type="text/javascript">
 
 </script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <%= image_tag @blog.photo.url(:original), :class => "img-responsive" %>
+  </div>
+</div>
 
 </body>
 
