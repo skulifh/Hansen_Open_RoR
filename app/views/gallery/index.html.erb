@@ -53,16 +53,17 @@
                 <% @galleries.each_with_index do |gallery, index| %>
                 <div class="col-md-4 portfolio-item" style="margin-bottom:60px;">
                  <div class="thumbnail">
-                    <a >
+                    <a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>',<%=gallery.id%>);">
                         <%= image_tag gallery.photo.url(:preview), :class => "img-responsive" %>
                     </a>
-                    <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>');"><%=gallery.name%></a>
+                    <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>',<%=gallery.id%>);"><%=gallery.name%></a>
                     </h3>
                     <p>
                         <span class="glyphicon glyphicon-time"></span> <%=gallery.created_at.strftime("Sett inn %m/%d/%Y, klukkan %H:%M")  %></p> <hr>
                         <p style = "height: 60px;"><%= gallery.description %></p>
                         <div style = "height: 40px;">
-                            <p><button class="btn btn-primary" style="float:left; margin-right:15px;" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>');">Skoða</button></p>
+                            <p><button class="btn btn-primary" style="float:left; margin-right:15px;" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>',<%=gallery.id%>);">Skoða</button>
+                            </p>
                         <%if current_user && has_access(gallery, current_user)%>
                             
                             <%= button_to "Breyta", edit_gallery_path(:id => gallery.id), {method: :get, class: "btn btn-primary", style:"float:left; margin-right:15px;"} %>
@@ -135,6 +136,7 @@
         height: 407 //--I made heights match
     });
 
+
     $('#fullscreen').click(function() {
         $('#galleria').data('galleria').toggleFullscreen(); // toggles the fullscreen
     });
@@ -157,9 +159,26 @@
         });
     }
 
-    function modalClick(title) {  
-        $("#myModalLabel").text(title);
-        $('#myModal').modal('toggle');
+    function modalClick(title,gallery_id) {  
+        
+        $.ajax({
+            url: "/gallery/"+gallery_id+"/raise_counter",
+            dataType: "html",
+            data: {
+                gallery_id: gallery_id
+            },
+            type: 'GET',
+            success: function( data ) {
+                $("#myModalLabel").text(title);
+                $('#myModal').modal('toggle');
+            },
+              error: function(){
+
+              }
+
+
+
+        }); 
     }
 
     </script>

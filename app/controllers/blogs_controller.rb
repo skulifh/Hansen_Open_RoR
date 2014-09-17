@@ -49,6 +49,8 @@ class BlogsController < ApplicationController
 
 	def show
 		@blog = Blog.find(params[:id])
+		@blog.viewed += 1
+		@blog.save
 	end
 
 	private

@@ -157,10 +157,10 @@
         <% @galleries.each do |gallery| %>
 
             <div class="col-md-4 portfolio-item">
-                <a href="#project-link">
+                <a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>',<%=gallery.id%>);">
                     <%= image_tag gallery.photo.url(:frontpage), :class => "img-responsive" %>
                 </a>
-                <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>');"><%=gallery.name%></a>
+                <h3><a href="#project-link" onclick="loadGalleria('<%=gallery.setid%>');modalClick('<%=gallery.name%>',<%=gallery.id%>);"><%=gallery.name%></a>
                 </h3>
                 <p><%= gallery.description %></p>
             </div>
@@ -274,9 +274,25 @@
         });
     }
 
-    function modalClick(title) {  
-        $("#myModalLabel").text(title);
-        $('#myModal').modal('toggle');
+    function modalClick(title,gallery_id) {  
+        $.ajax({
+            url: "/gallery/"+gallery_id+"/raise_counter",
+            dataType: "html",
+            data: {
+                gallery_id: gallery_id
+            },
+            type: 'GET',
+            success: function( data ) {
+                $("#myModalLabel").text(title);
+                $('#myModal').modal('toggle');
+            },
+              error: function(){
+
+              }
+
+
+
+        }); 
     }
 </script>
 

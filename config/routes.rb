@@ -11,7 +11,9 @@ Golf::Application.routes.draw do
   root 'welcome#index'
 
   resources :blogs
-  resources :gallery
+  resources :gallery do
+    get :raise_counter
+  end
   resources :image
 
   resources :user do

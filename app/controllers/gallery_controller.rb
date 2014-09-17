@@ -4,6 +4,14 @@ class GalleryController < ApplicationController
   	@galleries = Gallery.find(:all, :order => "created_at desc")
   end
 
+  def raise_counter
+    gallery = Gallery.find(params[:gallery_id])
+    gallery.viewed += 1
+    gallery.save
+
+    redirect_to :back
+  end
+
   def new
     if !current_user
       redirect_to root_path

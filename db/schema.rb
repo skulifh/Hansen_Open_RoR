@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909164402) do
+ActiveRecord::Schema.define(version: 20140917161321) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140909164402) do
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
     t.integer  "user_id"
+    t.integer  "viewed",             default: 0
   end
 
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140909164402) do
     t.datetime "photo_updated_at"
     t.integer  "user_id"
     t.text     "description"
+    t.integer  "viewed",             default: 0
   end
 
   add_index "galleries", ["user_id"], name: "index_galleries_on_user_id"
