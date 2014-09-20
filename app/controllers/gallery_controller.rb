@@ -6,8 +6,10 @@ class GalleryController < ApplicationController
 
   def raise_counter
     gallery = Gallery.find(params[:gallery_id])
-    gallery.viewed += 1
-    gallery.save
+    if (!current_user) || (current_user.id != gallery.user_id)
+      gallery.viewed += 1
+      gallery.save
+    end
 
     redirect_to :back
   end
