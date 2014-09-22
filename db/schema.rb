@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917161321) do
+ActiveRecord::Schema.define(version: 20140922162814) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20140917161321) do
   end
 
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
+
+  create_table "blogs_galleries", force: true do |t|
+    t.integer "blog_id"
+    t.integer "gallery_id"
+  end
 
   create_table "galleries", force: true do |t|
     t.text     "name"
@@ -52,6 +57,18 @@ ActiveRecord::Schema.define(version: 20140917161321) do
     t.integer  "photo_file_size"
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "tournaments", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournaments_users", force: true do |t|
+    t.integer "tournament_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
