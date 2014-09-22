@@ -40,7 +40,7 @@
 
                 <!-- the actual blog post: title/author/date/content -->
                 
-                <a href="#myModal" data-toggle="modal"><%= image_tag @blog.photo.url(:frontpage), :class => "img-responsive" %></a>
+                <a href="#myModal2" data-toggle="modal"><%= image_tag @blog.photo.url(:frontpage), :class => "img-responsive" %></a>
                 <hr>
                 <p><%=simple_format(@blog.text)%></p>
 
@@ -259,7 +259,7 @@
     }
 
 </script>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true">
   <div class="modal-dialog">
     <%= image_tag @blog.photo.url(:original), :class => "img-responsive" %>
   </div>
