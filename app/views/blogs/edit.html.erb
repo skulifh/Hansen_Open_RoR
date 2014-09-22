@@ -12,6 +12,11 @@
       <p>
         <%= f.label 'Text:' %><br/>
         <%= f.text_area :text, :required => true, rows: 10, class: "form-control" %>  </p>
+      </p>
+      <p>
+        <%= f.label 'Myndaalbúm:' %><br/>
+        <%= f.text_field :galleries_tokens, "data-pre" => @blog.galleries.to_json, class: "form-control" %>  </p>
+      </p>
       <p>
         <%= f.file_field :photo %>
       </p>
@@ -24,3 +29,12 @@
   <div class="col-md-4">
   </div>
 </div>
+
+<script type="text/javascript">
+ $(function() {
+    $("#blog_galleries_tokens").tokenInput("/gallery.json", {
+      crossDomain: false,
+      prePopulate: $("#blog_galleries_tokens").data("pre")
+    });
+ });
+</script>

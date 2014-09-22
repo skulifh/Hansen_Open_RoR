@@ -1,7 +1,12 @@
 class GalleryController < ApplicationController
   include GalleryHelper
   def index
-  	@galleries = Gallery.find(:all, :order => "created_at desc")
+  	#@galleries = Gallery.find(:all, :order => "created_at desc")
+    @galleries = Gallery.where("name like ?", "%#{params[:q]}%").order("created_at desc")
+    respond_to do |format|
+      format.html
+      format.json { render :json => @galleries }
+    end
   end
 
   def raise_counter

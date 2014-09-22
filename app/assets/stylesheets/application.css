@@ -13,6 +13,9 @@
  *= require custom
  *= require galleria.classic
  *= require one-page-wonder
+ *= require token-input
+ *= require token-input-facebook
+ *= require token-input-mac
  *= require_tree .
  */
 

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_and_belongs_to_many :tournaments
 	before_create :create_remember_token
 	has_attached_file :photo,
 		:styles => {:frontpage => ['700x700#']},

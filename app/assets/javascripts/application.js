@@ -18,4 +18,5 @@
 //= require galleria.classic.min
 //= require turbolinks
 //= require bootstrap.min
+//= require jquery.tokeninput
 //= require_tree .
