@@ -1,0 +1,52 @@
+
+<div class="container" style="margin-top: 60px;">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <h1>Ný keppni</h1>
+    <%= form_for :tournament, url: {action: "create"}, html: {:multipart => true} do |f| %>
+      <p>
+        <%= f.label 'Nafn:' %><br/>
+        <%= f.text_field :name, :required => true, class: "form-control" %>
+      </p>
+      <p>
+        <%= f.label 'Texti:' %><br/>
+        <%= f.text_area :description, :required => true, rows: 10, class: "form-control" %>  
+      </p>
+      <p>
+        <%= f.label 'Keppendur:' %><br/>
+        <%= f.text_field :users_tokens, class: "form-control" %> 
+      </p>
+      <p>
+        <%= f.label 'Myndaalbúm:' %><br/>
+        <%= f.text_field :galleries_tokens, class: "form-control" %> 
+      </p>
+      <p>
+        <%= f.file_field :photo, :required => true %>
+      </p>
+      <p>
+        <%= f.submit 'Create', class: "btn btn-success" %>&nbsp;&nbsp;&nbsp;
+        <%= f.submit 'Clear Form', class: "btn btn-default", :type => 'reset' %>
+      </p>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+<script type="text/javascript">
+ $(function() {
+    $("#tournament_galleries_tokens").tokenInput("/gallery.json", {
+      crossDomain: false,
+      theme: 'facebook'
+    });
+ });
+
+ $(function() {
+    $("#tournament_users_tokens").tokenInput("/user.json", {
+      crossDomain: false,
+      propertyToSearch: "fullname",
+      theme: 'facebook'
+    });
+ });
+</script>

@@ -11,6 +11,7 @@ Golf::Application.routes.draw do
   root 'welcome#index'
 
   resources :blogs
+  resources :tournaments
   resources :gallery do
     get :raise_counter
   end

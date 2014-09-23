@@ -17,6 +17,8 @@
                     </li>
                     <li><%= link_to "Myndasöfn", gallery_index_path(), {method: :get} %>
                     </li>
+                    <li><%= link_to "Keppnir", tournaments_path(), {method: :get} %>
+                    </li>
                     <% if !current_user %> 
                         <li><%= link_to "Skrá inn", signin_path(), {method: :get} %>
                         </li>

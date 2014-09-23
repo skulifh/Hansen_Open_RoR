@@ -1,5 +1,13 @@
 class UserController < ApplicationController
 	include UserHelper
+	def index
+		@users = User.where("fullname like ?", "%#{params[:q]}%").order("created_at desc")
+	    respond_to do |format|
+	      format.html
+	      format.json { render :json => @users }
+	    end
+	end
+
 	def create
 		if current_user && is_admin(current_user)
 			hashed_pw = Digest::SHA1.hexdigest("123")
