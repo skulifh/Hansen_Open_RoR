@@ -12,6 +12,7 @@ Golf::Application.routes.draw do
 
   resources :blogs
   resources :tournaments
+  resources :game
   resources :gallery do
     get :raise_counter
   end
@@ -22,7 +23,7 @@ Golf::Application.routes.draw do
     put :remove_admin
   end
 
-  get '/game_prototype', :to => redirect('/webplayer/webplayer.html')
+  #get '/game_prototype', :to => redirect('/webplayer/webplayer.html')
   
   resources :session, only: [:new, :create, :destroy]
   match '/signup',  to: 'user#new',            via: 'get'
